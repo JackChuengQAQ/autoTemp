@@ -4,7 +4,7 @@ from datetime import datetime
 import random
 
 def get_rand_temp():
-    return round(random.uniform(36.8, 37.2), 1)
+    return round(random.uniform(36.5, 37.0), 1)
 
 def get_account():
     """
@@ -12,8 +12,7 @@ def get_account():
     """
     uid = getenv("STD_ID")
     psw = getenv("PASSWORD")
-    print(uid,psw)
-        
+    # print(uid,psw)
     return uid, psw
 
 class NUSHTD:
@@ -60,7 +59,7 @@ class NUSHTD:
       
 if __name__ == "__main__":
     uid, pwd = get_account()
-    print(uid,pwd)
+    # print(uid,pwd)
     nus_htd = NUSHTD("nusstu\\" + uid, pwd)
     tmp=get_rand_temp()
     result, msg = nus_htd.declare(tmp)
