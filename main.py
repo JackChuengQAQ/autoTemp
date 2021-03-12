@@ -12,9 +12,9 @@ def get_account():
     """
     uid = getenv("STD_ID")
     psw = getenv("PASSWORD")
-    if uid != None and psw != None:
-        print("从环境变量中获取了用户名和密码！")
-        return uid, psw
+    print(uid,psw)
+        
+    return uid, psw
 
 class NUSHTD:
     def __init__(self, username, password):
