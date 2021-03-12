@@ -61,7 +61,7 @@ class NUSHTD:
 if __name__ == "__main__":
     uid, pwd = get_account()
     print(uid,pwd)
-    nus_htd = NUSHTD("nusstu\" + uid, pwd)
+    nus_htd = NUSHTD("nusstu\\" + uid, pwd)
     tmp=get_rand_temp()
     result, msg = nus_htd.declare(tmp)
     print(msg)
