@@ -1,19 +1,22 @@
 name: NUS_TEMP 
    
 on:
- push: 
-  branches: [ master ] 
- pull_request: 
-  branches: [ master ] 
- schedule: 
- - cron: '2 4 * * *' 
- workflow_dispatch: [ master ] 
+   push: 
+      branches: [ master ] 
+   pull_request: 
+      branches: [ master ] 
+   schedule: 
+      - cron: '2 4 * * *' 
+   workflow_dispatch: [ master ]
+   
 jobs: 
-  build: 
-   name: Build 
-   runs-on: ubuntu-latest 
-   steps: 
-     - name: Check out code 
-       uses: actions/checkout@v2 
-     - name: run
-       run: STD_ID=${{ secrets.STD_ID }} PASSWORD=${{ secrets.PASSWORD }} python3 main.py
+
+   build: 
+      name: Build 
+      runs-on: ubuntu-latest 
+      steps: 
+      
+         - name: Check out code 
+           uses: actions/checkout@v2 
+         - name: run
+           run: STD_ID=${{ secrets.STD_ID }} PASSWORD=${{ secrets.PASSWORD }} python3 main.py
