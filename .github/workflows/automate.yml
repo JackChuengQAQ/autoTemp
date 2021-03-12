@@ -16,4 +16,4 @@ jobs:
      - name: Check out code 
        uses: actions/checkout@v2 
      - name: run
-       run:  python3 main.py
+       run: STD_ID=${{ secrets.STD_ID }} PASSWORD=${{ secrets.PASSWORD }} python3 main.py
