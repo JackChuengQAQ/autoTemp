@@ -5,6 +5,16 @@ import random
 def get_rand_temp():
     return round(random.uniform(36.8, 37.2), 1)
 
+def get_account():
+    """
+    获取账号信息
+    """
+    uid = getenv("STD_ID")
+    psw = getenv("PASSWORD")
+    if uid != None and psw != None:
+        print("从环境变量中获取了用户名和密码！")
+        return uid, psw
+
 class NUSHTD:
     def __init__(self, username, password):
         self.session = requests.Session()
@@ -15,8 +25,8 @@ class NUSHTD:
         resource = "sg_edu_nus_oauth"
         redirect_uri = "https://myaces.nus.edu.sg:443/htd/htd"
         auth_data = {
-            "UserName": secrets.STD_ID,
-            "password": secrets.PASSWORD,
+            "UserName": username,
+            "password": password,
             "authMethod": "FormsAuthentication"
         }
         auth_url = f"https://vafs.nus.edu.sg/adfs/oauth2/authorize?response_type={response_type}&client_id={client_id}&resource={resource}&redirect_uri={redirect_uri}"
@@ -48,7 +58,9 @@ class NUSHTD:
         return False, f'Unable to declare temperate.'
       
 if __name__ == "__main__":
-    nus_htd = NUSHTD("nusstu\EXXXXX", "password")
+    uid, pwd = get_account()
+    print(uid,pwd)
+    nus_htd = NUSHTD("nusstu\" + uid, pwd)
     tmp=get_rand_temp()
     result, msg = nus_htd.declare(tmp)
     print(msg)
